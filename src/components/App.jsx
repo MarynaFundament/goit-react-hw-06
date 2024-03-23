@@ -5,6 +5,8 @@ import ContactForm from "./ContactForm/ContactForm"
 import SearchBox from "./SearchBox/SearchBox"
 import ContactList from "./ContactList/ContactList"
 
+import Balance from "./Balance/balance"
+
 import data from "./contactList.json"
 
 const initialFormData = {
@@ -55,6 +57,7 @@ export const App = () => {
     <div>
       <h1>Phonebook</h1>
 
+      <Balance  />
       <ContactForm  value = {initialFormData} onAdd = {handleAdd}/>
       <SearchBox value = {filterText} onChange = {setFilter}/>
       <ContactList contacts={filteredData} onDelete = {handleDelete} />
