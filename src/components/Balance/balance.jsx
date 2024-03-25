@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import {deposit, withdraw} from "../redux/contactsSlice"
+import {deposit, withdraw} from "../redux/contactsSlice1"
 
 
 export default function Balance() {

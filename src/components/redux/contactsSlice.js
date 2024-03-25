@@ -1,29 +1,52 @@
-import { createAction, createReducer } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
+import { persistReducer } from 'redux-persist';
+import { nanoid } from 'nanoid';
 
 
-export const deposit = createAction("balance/deposit")
-export const withdraw = createAction("balance/withdraw")
-
-export const balanceReducer1 = createReducer({value: 1000}, () => {})
-export const balanceReducer = (state = { value: 1000 }, action) => {
-   
-    switch(action.type) {
-
-        case "balance/deposit" : 
+const contactsReducer = createSlice({
+    name: "contacts",
+    initialState: {
+      items: [],
+    },
+ 
+    reducers: {
+      addContact(state, action) {
+        state.items.push(action.payload);
+      },
+      prepare(contact) {
         return {
-           ...state,
-           value: state.value + action.payload,
-        }
+          payload: {
+            ...contact,
+            id: nanoid(),
+          },
+        };
+      },
 
-        case "balance/withdraw": 
-        return {
-                ...state,
-                value: state.value - action.payload,
-        }
+      deleteContact(state, action) {
 
-    
-            default:
-                return state;
-}
-}
+        state.items = state.items.filter((contact) => contact.id !== action.payload);
+     
+      },
+    },
+  });
+
+//   const persistConfig = {
+//     key: 'contacts',
+//     storage,
+//   };
+
+//   export const persistedReducer = persistReducer(
+//     persistConfig,
+//     contactsSlice.reducer
+//   );
+
+  export const { addContact, deleteContact } = contactsReducer.actions;
+
+  export const selectContacts = (state) => state.contacts.items;
+  
+  export default contactsReducer.reducer;
+
+
+
+
 

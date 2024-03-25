@@ -1,12 +1,16 @@
+import { useDispatch } from "react-redux"
+import { deleteContact } from "../redux/contactsSlice"
+
 import { FaPhoneAlt } from "react-icons/fa";
 import { GrUserManager } from "react-icons/gr";
-
 
 import styles from "./contact.module.css"
 import PropTypes from 'prop-types';
 
 
-const Contact = ({data : {id, name, number}, onDelete}) => {
+const Contact = ({data : {id, name, number}}) => {
+
+  const dispatch = useDispatch()
 
   return (
         <div className={styles.element}>
@@ -23,7 +27,10 @@ const Contact = ({data : {id, name, number}, onDelete}) => {
         
         </div>
 
-        <button onClick={() => onDelete(id)}> Delete </button>
+        <button 
+        onClick={() => dispatch(deleteContact({id: id}))}
+        >
+         Delete </button>
 
         </div>
         
@@ -32,11 +39,11 @@ const Contact = ({data : {id, name, number}, onDelete}) => {
 
 Contact.propTypes = {
   data: PropTypes.shape({
-    id: PropTypes.number.isRequired,
+    id: PropTypes.string.isRequired, 
     name: PropTypes.string.isRequired,
-    number: PropTypes.number.isRequired,
+    number: PropTypes.string.isRequired, 
   }),
-  onDelete: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired, 
 };
 
 export default Contact; 

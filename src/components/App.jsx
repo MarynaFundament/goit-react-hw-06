@@ -28,7 +28,6 @@ export const App = () => {
     const [contacts, setContacts] = useState(getInitialData());
     
    
-
     const filteredData = contacts.filter((el) => 
     el.name.toLowerCase().includes(filterText.toLowerCase()))
     
@@ -39,13 +38,13 @@ export const App = () => {
     
     };
 
-    const handleDelete = (contactId) => {
-      setContacts((prevContacts) => {
-        return prevContacts.filter (el => 
-          el.id !== contactId)
-      })
+    // const handleDelete = (contactId) => {
+    //   setContacts((prevContacts) => {
+    //     return prevContacts.filter (el => 
+    //       el.id !== contactId)
+    //   })
     
-    }
+    // }
 
 
     useEffect(() => {
@@ -60,7 +59,7 @@ export const App = () => {
       <Balance  />
       <ContactForm  value = {initialFormData} onAdd = {handleAdd}/>
       <SearchBox value = {filterText} onChange = {setFilter}/>
-      <ContactList contacts={filteredData} onDelete = {handleDelete} />
+      <ContactList contacts={filteredData} />
 
     </div>
   );

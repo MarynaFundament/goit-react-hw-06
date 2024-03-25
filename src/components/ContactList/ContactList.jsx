@@ -3,7 +3,6 @@ import styles from "./contactList.module.css"
 import PropTypes from 'prop-types';
 
 
-
 const ContactList = ({contacts, onDelete}) => {
 
     return (
