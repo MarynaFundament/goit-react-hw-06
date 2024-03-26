@@ -31,12 +31,12 @@ export const App = () => {
     const filteredData = contacts.filter((el) => 
     el.name.toLowerCase().includes(filterText.toLowerCase()))
     
-    const handleAdd = (newContact) => { 
-      setContacts ((prevContacts) => {
-        return [...prevContacts, newContact ]
-      })
+    // const handleAdd = (newContact) => { 
+    //   setContacts ((prevContacts) => {
+    //     return [...prevContacts, newContact ]
+    //   })
     
-    };
+    // };
 
     // const handleDelete = (contactId) => {
     //   setContacts((prevContacts) => {
@@ -57,7 +57,7 @@ export const App = () => {
       <h1>Phonebook</h1>
 
       <Balance  />
-      <ContactForm  value = {initialFormData} onAdd = {handleAdd}/>
+      <ContactForm  value = {initialFormData}/>
       <SearchBox value = {filterText} onChange = {setFilter}/>
       <ContactList contacts={filteredData} />
 

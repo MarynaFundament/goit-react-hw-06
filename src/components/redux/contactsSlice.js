@@ -23,10 +23,13 @@ const contactsReducer = createSlice({
       },
 
       deleteContact(state, action) {
+        const contactIdToDelete = action.payload;
+        console.log(contactIdToDelete)
 
-        state.items = state.items.filter((contact) => contact.id !== action.payload);
-     
-      },
+        state.items = state.items.filter(contact => contact.id !== contactIdToDelete);
+        console.log( state.items)
+        ;
+    },
     },
   });
 

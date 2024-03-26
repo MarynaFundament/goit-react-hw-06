@@ -11,6 +11,8 @@ import PropTypes from 'prop-types';
 const Contact = ({data : {id, name, number}}) => {
 
   const dispatch = useDispatch()
+  
+
 
   return (
         <div className={styles.element}>
@@ -28,10 +30,12 @@ const Contact = ({data : {id, name, number}}) => {
         </div>
 
         <button 
-        onClick={() => dispatch(deleteContact({id: id}))}
+        onClick={() => dispatch(deleteContact(id))
+        }
+       
         >
          Delete </button>
-
+        
         </div>
         
     )
@@ -43,7 +47,6 @@ Contact.propTypes = {
     name: PropTypes.string.isRequired,
     number: PropTypes.string.isRequired, 
   }),
-  onDelete: PropTypes.func.isRequired, 
 };
 
 export default Contact; 

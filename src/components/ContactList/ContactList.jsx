@@ -3,14 +3,14 @@ import styles from "./contactList.module.css"
 import PropTypes from 'prop-types';
 
 
-const ContactList = ({contacts, onDelete}) => {
+const ContactList = ({contacts}) => {
 
     return (
         <ul>
         { contacts.map((el) =>(
 
         <li key={el.id}>
-        <Contact data = {el} onDelete = {onDelete}/>
+        <Contact data = {el}/>
         </li> 
          ))}
 

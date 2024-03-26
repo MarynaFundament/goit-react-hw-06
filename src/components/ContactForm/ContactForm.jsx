@@ -6,6 +6,9 @@ import { nanoid } from 'nanoid'
 import styles from "./form.module.css"
 import PropTypes from 'prop-types';
 
+import { useDispatch } from "react-redux"
+import { addContact } from "../redux/contactsSlice"
+
 
 const UserSchema = Yup.object().shape({
     name: Yup.string()
@@ -20,15 +23,17 @@ const UserSchema = Yup.object().shape({
 })
 
 
-const ContactForm = ({ value, onAdd }) => {
-    
+const ContactForm = ({ value }) => {
+    const dispatch = useDispatch()
+
 const handleSubmit = (e, { resetForm }) => {
 
-    onAdd({
+    const newContact = {
         name: e.name, 
         number: e.number, 
-        id: nanoid()
-    })
+        id: nanoid()}
+
+    dispatch(addContact(newContact));
 
     resetForm()
 }
@@ -62,7 +67,6 @@ const handleSubmit = (e, { resetForm }) => {
 
 ContactForm.propTypes = {
     value: PropTypes.object.isRequired,
-    onAdd: PropTypes.func.isRequired,
   };
 
 export default ContactForm
