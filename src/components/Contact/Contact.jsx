@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux"
-import { deleteContact } from "../redux/contactsSlice"
+import { deleteContact } from "../../redux/contactsSlice"
 
 import { FaPhoneAlt } from "react-icons/fa";
 import { GrUserManager } from "react-icons/gr";
