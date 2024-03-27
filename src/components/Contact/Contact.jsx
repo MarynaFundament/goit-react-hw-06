@@ -12,8 +12,6 @@ const Contact = ({data : {id, name, number}}) => {
 
   const dispatch = useDispatch()
   
-
-
   return (
         <div className={styles.element}>
         <div >
